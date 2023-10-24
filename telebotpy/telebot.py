@@ -1,0 +1,69 @@
+import requests
+from datetime import datetime
+
+class TelegramBot:
+    def __init__(self, token, chat_id):
+        self.token = token
+        self.chat_id = chat_id
+
+    def _get_date_time(self):
+        now = datetime.now()
+        date = now.strftime("%Y-%m-%d")
+        time = now.strftime("%H:%M:%S")
+        return f"Date: {date} {time}"
+
+    def send_text_message(self, message):
+        url = f"https://api.telegram.org/bot{self.token}/sendMessage"
+        date_time = self._get_date_time()
+        params = {
+            'chat_id': self.chat_id,
+            'text': message + "  \n" + date_time
+        }
+
+        response = requests.post(url, data=params)
+
+        if response.status_code == 200:
+            print("Text message sent successfully")
+        else:
+            print(f"Failed to send text message. Error code: {response.status_code}")
+            print(response.text)
+
+    def send_image(self, image_filename, caption):
+        with open(image_filename, 'rb') as image_file:
+            url = f"https://api.telegram.org/bot{self.token}/sendPhoto"
+            date_time = self._get_date_time()
+            files = {
+                'photo': (image_filename, image_file)
+            }
+            params = {
+                'chat_id': self.chat_id,
+                'caption': caption + "  \n" + date_time
+            }
+
+            response = requests.post(url, data=params, files=files)
+
+            if response.status_code == 200:
+                print("Image sent successfully")
+            else:
+                print(f"Failed to send image. Error code: {response.status_code}")
+                print(response.text)
+
+    def send_document(self, document_path, caption):
+        with open(document_path, 'rb') as document_file:
+            url = f"https://api.telegram.org/bot{self.token}/sendDocument"
+            date_time = self._get_date_time()
+            files = {
+                'document': (document_path, document_file)
+            }
+            params = {
+                'chat_id': self.chat_id,
+                'caption': caption + "  \n" + date_time
+            }
+
+            response = requests.post(url, data=params, files=files)
+
+            if response.status_code == 200:
+                print("Document sent successfully")
+            else:
+                print(f"Failed to send document. Error code: {response.status_code}")
+                print(response.text)
