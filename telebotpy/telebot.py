@@ -12,6 +12,13 @@ class TelegramBot:
         time = now.strftime("%H:%M:%S")
         return f"Date: {date} {time}"
 
+    def _handle_response(self, response):
+        if response.status_code == 200:
+            print("Request successful.")
+        else:
+            print(f"Request failed. Error code: {response.status_code}")
+            print(response.text)
+
     def send_text_message(self, message):
         url = f"https://api.telegram.org/bot{self.token}/sendMessage"
         date_time = self._get_date_time()
@@ -20,13 +27,11 @@ class TelegramBot:
             'text': message + "  \n" + date_time
         }
 
-        response = requests.post(url, data=params)
-
-        if response.status_code == 200:
-            print("Text message sent successfully")
-        else:
-            print(f"Failed to send text message. Error code: {response.status_code}")
-            print(response.text)
+        try:
+            response = requests.post(url, data=params)
+            self._handle_response(response)
+        except requests.exceptions.RequestException as e:
+            print(f"Failed to send text message: {e}")
 
     def send_image(self, image_filename, caption):
         with open(image_filename, 'rb') as image_file:
@@ -40,13 +45,11 @@ class TelegramBot:
                 'caption': caption + "  \n" + date_time
             }
 
-            response = requests.post(url, data=params, files=files)
-
-            if response.status_code == 200:
-                print("Image sent successfully")
-            else:
-                print(f"Failed to send image. Error code: {response.status_code}")
-                print(response.text)
+            try:
+                response = requests.post(url, data=params, files=files)
+                self._handle_response(response)
+            except requests.exceptions.RequestException as e:
+                print(f"Failed to send image: {e}")
 
     def send_document(self, document_path, caption):
         with open(document_path, 'rb') as document_file:
@@ -60,10 +63,8 @@ class TelegramBot:
                 'caption': caption + "  \n" + date_time
             }
 
-            response = requests.post(url, data=params, files=files)
-
-            if response.status_code == 200:
-                print("Document sent successfully")
-            else:
-                print(f"Failed to send document. Error code: {response.status_code}")
-                print(response.text)
+            try:
+                response = requests.post(url, data=params, files=files)
+                self._handle_response(response)
+            except requests.exceptions.RequestException as e:
+                print(f"Failed to send document: {e}")
