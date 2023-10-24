@@ -23,6 +23,8 @@ from telebotpy.telebot import TelegramBot
 # Replace 'YOUR_TOKEN' and 'YOUR_CHAT_ID' with your actual values
 bot = TelegramBot(token="YOUR_TOKEN", chat_id="YOUR_CHAT_ID")
 bot.send_text_message("This is a test message.")
+bot.send_video('video.mp4', "Video caption")
+
 ```
 
 For more detailed examples and documentation, please visit the Wiki section of our GitHub repository.
