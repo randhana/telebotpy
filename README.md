@@ -18,7 +18,7 @@ pip install telepy
 ## Usage
 Here's how you can use telepy to send a text message to a Telegram channel:
 ```shell
-from telepy import TelegramBot
+from telebotpy.telebot import TelegramBot
 
 # Replace 'YOUR_TOKEN' and 'YOUR_CHAT_ID' with your actual values
 bot = TelegramBot(token="YOUR_TOKEN", chat_id="YOUR_CHAT_ID")
