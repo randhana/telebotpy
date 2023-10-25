@@ -10,10 +10,11 @@ telepy is a Python package that simplifies the process of sending text messages,
 
 ## Installation
 
-You can install `telepy` using pip:
+You can install `telebotpy` using pip:
 
 ```shell
-pip install telepy
+(not available)
+pip install telebotpy 
 ```
 ## Usage
 Here's how you can use telepy to send a text message to a Telegram channel:
