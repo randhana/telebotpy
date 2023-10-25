@@ -24,7 +24,8 @@ class TelegramBot:
         date_time = self._get_date_time()
         params = {
             'chat_id': self.chat_id,
-            'text': message + "  \n" + date_time
+            'text': message + "  \n" + date_time,
+            'parse_mode': 'HTML'
         }
 
         try:
