@@ -37,7 +37,4 @@ We welcome contributions from the community. If you have any suggestions, bug re
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
-
-- Email: [pulathisi1921@gmail.com](mailto:pulathisi1921@gmail.com)
-- LinkedIn: [pulathisi-kariyawasam](https://lk.linkedin.com/in/pulathisi-kariyawasam)
 - GitHub: [randhana](https://github.com/randhana)
