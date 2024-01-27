@@ -33,8 +33,6 @@ bot.send_document('document.txt', 'Document_caption')
 
 ```
 
-For more detailed examples and documentation, please visit the Wiki section of our GitHub repository.
-
 ## Contributing
 We welcome contributions from the community. If you have any suggestions, bug reports, or would like to contribute to the development of telepy, please visit our GitHub repository and open an issue or submit a pull request.
 
