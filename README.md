@@ -27,7 +27,9 @@ from telebotpy.telebot import TelegramBot
 
 # Replace 'YOUR_TOKEN' and 'YOUR_CHAT_ID' with your actual values
 bot = TelegramBot(token="YOUR_TOKEN", chat_id="YOUR_CHAT_ID")
-bot.send_text_message("This is a test message.")
+bot.send_text_message("This is a test message.") 
+#send messages with Markdown formatting
+bot.send_text_message("*Bold* _italic_ [website](https://example.com)") 
 bot.send_video('video.mp4', "Video_caption")
 bot.send_document('document.txt', 'Document_caption')
 
