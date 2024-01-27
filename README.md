@@ -10,7 +10,16 @@ telepy is a Python package that simplifies the process of sending text messages,
 
 ## Installation
 
+1. **Clone the project to your local machine:**
 
+```bash
+git clone https://github.com/randhana/telebotpy.git
+```
+2. Copy the telebotpy folder from the cloned project to your own project folder.
+Import the module in your Python script:
+```shell
+from telebotpy.telebot import TelegramBot
+```
 ## Usage
 Here's how you can use telepy to send a text message to a Telegram channel:
 ```shell
