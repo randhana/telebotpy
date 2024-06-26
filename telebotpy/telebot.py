@@ -39,15 +39,15 @@ class TelegramBot:
             url = f"https://api.telegram.org/bot{self.token}/sendPhoto"
             date_time = self._get_date_time()
             files = {
-                'photo': (image_filename, image_file)
+                'photo': image_file
             }
-            params = {
+            data = {
                 'chat_id': self.chat_id,
                 'caption': caption + "  \n" + date_time
             }
 
             try:
-                response = requests.post(url, data=params, files=files)
+                response = requests.post(url, files=files, data=data)
                 self._handle_response(response)
             except requests.exceptions.RequestException as e:
                 print(f"Failed to send image: {e}")
@@ -57,15 +57,15 @@ class TelegramBot:
             url = f"https://api.telegram.org/bot{self.token}/sendDocument"
             date_time = self._get_date_time()
             files = {
-                'document': (document_path, document_file)
+                'document': document_file
             }
-            params = {
+            data = {
                 'chat_id': self.chat_id,
                 'caption': caption + "  \n" + date_time
             }
 
             try:
-                response = requests.post(url, data=params, files=files)
+                response = requests.post(url, files=files, data=data)
                 self._handle_response(response)
             except requests.exceptions.RequestException as e:
                 print(f"Failed to send document: {e}")
