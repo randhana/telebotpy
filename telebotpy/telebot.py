@@ -13,11 +13,14 @@ class TelegramBot:
         return f"Date: {date} {time}"
 
     def _handle_response(self, response):
-        if response.status_code == 200:
+        try:
+            response.raise_for_status()  
             print("Request successful.")
-        else:
+        except requests.exceptions.HTTPError as e:
             print(f"Request failed. Error code: {response.status_code}")
             print(response.text)
+        except requests.exceptions.RequestException as e:
+            print(f"Request exception: {e}")
 
     def send_text_message(self, message):
         url = f"https://api.telegram.org/bot{self.token}/sendMessage"
