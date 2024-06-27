@@ -72,3 +72,21 @@ class TelegramBot:
                 self._handle_response(response)
             except requests.exceptions.RequestException as e:
                 print(f"Failed to send document: {e}")
+
+    def send_video(self, video_path, caption):
+        with open(video_path, 'rb') as video_file:
+            url = f"https://api.telegram.org/bot{self.token}/sendVideo"
+            date_time = self._get_date_time()
+            files = {
+                'video': video_file
+            }
+            data = {
+                'chat_id': self.chat_id,
+                'caption': caption + "  \n" + date_time
+            }
+
+            try:
+                response = requests.post(url, files=files, data=data)
+                self._handle_response(response)
+            except requests.exceptions.RequestException as e:
+                print(f"Failed to send video: {e}")
